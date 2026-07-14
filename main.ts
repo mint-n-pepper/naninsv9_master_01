@@ -18,6 +18,9 @@ radio.onReceivedValue(function (name, value) {
             nanins.write_v_max(nanins.NOSE_TAIL.tail, 33)
             nanins.write_v_max(nanins.NOSE_TAIL.tail, 33)
         }
+    } else if (name.includes("messung")) {
+        radio.sendValue("messung", nanins.read_pressure(nanins.INSIDE_OUTSIDE.inside))
+        radio.sendValue("messung", nanins.read_temp(nanins.INSIDE_OUTSIDE.inside))
     } else {
     	
     }
@@ -26,12 +29,6 @@ let Funknummer = 1
 let colors = 0
 radio.setGroup(Funknummer)
 radio.sendValue("led", 1)
-loops.everyInterval(1000, function () {
-    if (true) {
-        radio.sendValue("led", nanins.read_pressure(nanins.INSIDE_OUTSIDE.inside))
-        radio.sendValue("led", nanins.read_temp(nanins.INSIDE_OUTSIDE.inside))
-    }
-})
 /**
  * motor bedeutet die Steuerung der N20 Motoren.
  * 
