@@ -18,28 +18,29 @@ radio.onReceivedValue(function (name, value) {
             nanins.write_v_max(nanins.NOSE_TAIL.tail, 33)
             nanins.write_v_max(nanins.NOSE_TAIL.tail, 33)
         }
-    } else if (name.includes("messung")) {
-        radio.sendValue("messung", nanins.read_pressure(nanins.INSIDE_OUTSIDE.inside))
-        radio.sendValue("messung", nanins.read_temp(nanins.INSIDE_OUTSIDE.inside))
+    } else if (name.includes("p1")) {
+        radio.sendValue("p1", nanins.read_pressure(nanins.INSIDE_OUTSIDE.inside))
+        radio.sendValue("p1", nanins.read_temp(nanins.INSIDE_OUTSIDE.inside))
+    } else if (name.includes("p2")) {
+        radio.sendValue("p2", nanins.read_pressure(nanins.INSIDE_OUTSIDE.outside))
+        radio.sendValue("p2", nanins.read_temp(nanins.INSIDE_OUTSIDE.outside))
     } else {
-    	
+        basic.clearScreen()
     }
 })
-let Funknummer = 1
 let colors = 0
+let Funknummer = 1
 radio.setGroup(Funknummer)
-radio.sendValue("led", 1)
-/**
- * motor bedeutet die Steuerung der N20 Motoren.
- * 
- * 1 Abtauchen= P (Plunger) vorne einfahren, Pause, P hinten einfahren.
- * 
- * 2 Unten P ganz oben
- * 
- * 3 Auftauchen P vorne zuerst dann hinten
- * 
- * 4 Mittelposition beide P
- */
+radio.sendValue("led", Funknummer)
+// motor bedeutet das Verhalten/Steuerung der N20 Motoren um die Plunger zu bewegen.
+// 
+// 1 Abtauchen: P(Plunger) vorne einfahren, Pause= x, P hinten einfahren.
+// 
+// 2 Sinken: Beide P nach oben
+// 
+// 3 Auftauchen: P vorne nach unten, Pause =x, P hinten nach unten
+// 
+// 4 Mittelposition: beide P dauer=y
 basic.forever(function () {
     basic.showNumber(Funknummer)
 })
