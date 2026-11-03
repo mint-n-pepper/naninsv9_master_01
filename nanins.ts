@@ -23,7 +23,7 @@
 /**
  * Functions to operate the Nanins under-water robot.
  */
-//% weight=5 color=#015f85 icon="\u26f4" block="Nanins" advanced=false
+//% weight=5 color=#015f85 icon="\u1f41f" block="Nanins" advanced=false
 //% groups=['Senden', 'Empfangen', 'Beschleunigung', 'Feldstärke', 'Position', 'Orientierung']
 namespace nanins {
     // 
@@ -50,9 +50,9 @@ namespace nanins {
     }
 
     export enum NOSE_TAIL {
-        //%block="Bug"
+        //%block="Vorne"
         nose,
-        //%block="Heck"
+        //%block="Hinten"
         tail
     }
 

@@ -28,10 +28,8 @@ radio.onReceivedValue(function (name, value) {
         basic.clearScreen()
     }
 })
-let colors = 0
 let Funknummer = 1
 radio.setGroup(Funknummer)
-radio.sendValue("led", Funknummer)
 // motor bedeutet das Verhalten/Steuerung der N20 Motoren um die Plunger zu bewegen.
 // 
 // 1 Abtauchen: P(Plunger) vorne einfahren, Pause= x, P hinten einfahren.
